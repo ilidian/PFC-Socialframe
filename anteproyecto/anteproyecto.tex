@@ -1,0 +1,58 @@
+% Clase
+\documentclass[11pt,a4paper,spanish,twoside]{report}
+
+% Órdenes auxiliares
+\input{inc/includes.tex}
+
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{multirow}
+
+%Para las secciones y las subseciones
+\makeatletter
+\renewcommand{\thesection}{\@arabic\c@section}
+\renewcommand{\section}{
+  \@startsection{section}{1}{0mm}{\baselineskip}
+  {2.5mm}{\Large\bf}
+}
+\renewcommand{\subsection}{
+  \@startsection{subsection}{2}{0mm}{2mm}
+  {4.0mm}{\bf}
+}
+\renewcommand{\subsubsection}{
+  \@startsection{subsubsection}{3}{0mm}{2mm}
+  {0.1mm}{\normalsize\bf\emph}
+}
+\makeatother
+
+\theoremstyle{plain} \newtheorem{nota}{Nota}
+
+% Encabezado y pie de página
+\encabezado
+
+\begin{document}
+
+% Portada
+\portada{Ingeniería en Informática}
+{\emph{Framebook}}{Anteproyecto Fin de Carrera}{Autor: Juan Miguel Torres Triviño\\Director: Ramón Hervás Lucas}{Febrero, 2012}  
+
+% Licencia
+\licencia{Juan Miguel Torres Triviño} 
+
+% Índices
+\tableofcontents
+%\listoftables
+\listoffigures
+
+\section{Objetivos}
+\subsection{Introducción}
+
+\subsection{Objetivos del proyecto}
+
+\subsection{Antecedentes y motivación}
+
+\section{Métodos y fases de trabajo}
+
+\section{Medios a utilizar}
+
+\end{document}
