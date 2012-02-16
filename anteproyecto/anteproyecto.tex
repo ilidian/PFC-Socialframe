@@ -1,58 +1,218 @@
 % Clase
-\documentclass[11pt,a4paper,spanish,twoside]{report}
+\documentclass[12pt,a4paper,spanish,oneside]{report}
 
 % Órdenes auxiliares
 \input{inc/includes.tex}
 
+\usepackage{anysize}
 \usepackage{amsthm}
 \usepackage{verbatim}
 \usepackage{multirow}
+\usepackage{setspace}
+\usepackage{tocbibind}
+\usepackage{times}
 
 %Para las secciones y las subseciones
 \makeatletter
 \renewcommand{\thesection}{\@arabic\c@section}
 \renewcommand{\section}{
   \@startsection{section}{1}{0mm}{\baselineskip}
-  {2.5mm}{\Large\bf}
+  {2.5mm}{\huge\bf}
 }
 \renewcommand{\subsection}{
   \@startsection{subsection}{2}{0mm}{2mm}
-  {4.0mm}{\bf}
+  {4.0mm}{\Large\bf}
 }
 \renewcommand{\subsubsection}{
   \@startsection{subsubsection}{3}{0mm}{2mm}
-  {0.1mm}{\normalsize\bf\emph}
+  {0.1mm}{\large\bf\emph}
 }
 \makeatother
 
 \theoremstyle{plain} \newtheorem{nota}{Nota}
 
+%color de las url
+\hypersetup{urlcolor=blue}
 % Encabezado y pie de página
 \encabezado
 
 \begin{document}
-
 % Portada
+\marginsize{2.5cm}{2cm}{3cm}{2cm}
 \portada{Ingeniería en Informática}
-{\emph{Framebook}}{Anteproyecto Fin de Carrera}{Autor: Juan Miguel Torres Triviño\\Director: Ramón Hervás Lucas}{Febrero, 2012}  
-
+{\emph{FrameBook}}{Red social familiar para personas dependientes}{Anteproyecto Fin de Carrera}{Autor: Juan Miguel Torres Triviño\\Director: Ramón Hervás Lucas}{Febrero, 2012}
+\marginsize{3.5cm}{2cm}{2.5cm}{2.5cm}
 % Licencia
 \licencia{Juan Miguel Torres Triviño} 
-
 % Índices
+\renewcommand*{\contentsname}{Índice de Contenidos}
 \tableofcontents
 %\listoftables
-\listoffigures
-
+%\listoffigures
+\newpage
 \section{Objetivos}
 \subsection{Introducción}
+\begin{spacing}{1.5}
+El objetivo primordial de la Ambient Assisting Living (AAL \cite{AAL}) es 
+facilitar y mejorar la calidad de vida en personas mayores o dependientes de 
+otras mediante el uso de tecnologías de información y comunicación. Dentro del
+ámbito de la AAL surgen multitud de aplicaciones móviles que se centran en 
+distintos aspectos de la vida como las relaciones sociales. Este tipo de 
+relaciones han tomado un rumbo diferente desde que entrasen en escena las redes
+ sociales en la Web, como por ejemplo Twitter o Facebook entre otras. 
 
-\subsection{Objetivos del proyecto}
-
+Gracias a la integración de nuevas tecnologías en los dispositivos móviles como
+códigos QR \cite{QR}, cámara, acelerómetro y conexión a Internet se han 
+desarrollado aplicaciones que nos aportan información de redes sociales y 
+permiten interactuar con ellas.
+\end{spacing}
+\subsection{Objetivo general}
+\begin{spacing}{1.5}
+El objetivo general del proyecto es el desarrollo de una aplicación en la 
+plataforma Android que permita a las personas dependientes interactuar con la 
+red social Facebook. La aplicación utiliza interfaces sencillas y cómodas para
+esa interacción.
+\end{spacing}
+\subsection{Objetivos específicos}
+\begin{spacing}{1.5}
+Se plantean una serie de objetivos específicos en los que se centra el trabajo a
+lo largo del proyecto:
+\begin{itemize}
+\item Desarrollo de una aplicación móvil en la plataforma Android que permita en
+todo momento acceder a la información personal de la red social Facebook. Se 
+realiza a través de servicios web que permiten en cualquier instante acceder a 
+esos datos.
+\item Realización de una interfaz invisible y sencilla para la aplicación móvil.
+La interacción es llevada a cabo por el uso de códigos QR y metáforas
+ que representan objetos cotidianos y su correspondencia con los posibles 
+elementos de la red social. Además la representación de los datos 
+proporcionados es intuitiva y fácil de entender para el usuario.
+\item Uso de librerías que simplifiquen algunos aspectos de la comunicación con 
+el dispositivo móvil.
+\end{itemize}
+\end{spacing}
 \subsection{Antecedentes y motivación}
-
+\begin{spacing}{1.5}
+Actualmente existe una gran variedad de aplicaciones sobre redes sociales para 
+dispositivos móviles, aunque casi ninguna enfocada al ámbito de las personas
+dependientes. \emph{Eldercare} \cite{CTW} surge como aplicación móvil para el 
+seguimiento de distintas actividades sobre la salud en personas mayores. Como 
+se puede ver en la figura \ref{ct} se muestran las distintas acciones que se 
+pueden realizar sobre la aplicación. 
+\imagen{img/caretwitter.png}{7}{Aplicación CareTwitter.}{ct}
+Utiliza la tecnología NFC \footnote[1]{\emph{NFC:} Near Field Communication.} 
+para la comunicación con el móvil y posteriormente muestra esos resultados en 
+la red social Twitter, como se puede ver en la figura \ref{tw}.
+\imagen{img/twitter.png}{7}{Twitter.}{tw}
+Las redes sociales continúan avanzando en Internet a pasos agigantados, 
+especialmente dentro de lo que se ha denominado Web 2.0 y Web 3.0, de entre 
+todas la que más ha aumentado en los últimos años es Facebook. Según el ranking
+\emph{Alexa}, generado por la empresa Alexa Interntet \cite{ALX}, la red social
+ Facebook es el segundo sitio más visitado en Internet y tiene unos 800.000 
+millones de usuarios en 2012. Estas estadísticas informan de la importancia de
+Facebook en los usuarios de Internet y por tanto, la necesidad de acercar esta
+experiencia a personas mayores o dependientes.
+\end{spacing}
 \section{Métodos y fases de trabajo}
-
+\subsection{Metodología de desarrollo}
+\begin{spacing}{1.5}
+Para el desarrollo del proyecto se utiliza el Proceso Unificado de Desarrollo
+\cite{PUD}. Consiste en un proceso iterativo e incremental para dividir el 
+trabajo en partes más concretas y sencillas de realizar. Se caracteriza por 
+estar dirigido hacia casos de uso y estar centrado en la arquitectura. El 
+desarrollo se divide en una serie de fases, que a su vez son divididas en 
+iteraciones, esto tiene como objetivo la planificación de diferentes 
+actividades para cada iteración. Al final de cada iteración se producen varios 
+entregables de tipo documentación o software que engloban uno o varios casos de
+ uso.
+\end{spacing}
+\subsection{Fases del desarrollo}
+\begin{spacing}{1.5}
+Las fases para el desarrollo completo de la aplicación, ordenadas 
+cronológicamente, son las siguientes:
+\begin{description}
+\item [Estado del arte.] En esta fase se realiza un análisis de la situación 
+actual de la temática del proyecto. Se tienen en cuenta tanto investigaciones 
+académicas como aplicaciones comerciales.
+\item [Desarrollo software.] En esta fase se procede a la construcción de la 
+aplicación siguiendo una serie de iteraciones, estas dependientes del número de
+casos de uso. Cada iteración consta de las siguientes fases:
+\begin{itemize}
+\item \emph{Recopilación de requisitos.} En esta fase se concretan los 
+requisitos que debe tener la aplicación a desarrollar.
+\item \emph{Análisis.} Tras la recogida de requisitos en la fase anterior, se
+realiza un análisis de los diferentes casos de uso de los que constará el 
+sistema final. Se utiliza el lenguaje unificado de modelado (UML) para 
+representar dichos casos de uso.
+\item \emph{Diseño.} En esta fase se profundiza en cada una de los casos de uso
+del sistema, diseñando sus respectivos componentes. También se utiliza el 
+lenguaje unificado de modelado (UML) para representar dichos diseños.
+\item \emph{Implementación.} En esta fase se realiza la implementación de los 
+casos de uso, basándose en los diseños de la fase anterior. Se utilizan los 
+lenguajes de programación y librerías más idóneos para esta fase, que 
+previamentes han sido elegidos.
+\item \emph{Pruebas.} Se prueba la aplicación en diferentes dispositivos que 
+han sido escogidos con anterioridad. Las pruebas se realizan de la forma más 
+exigente posible, es decir, en cada iteración se llevan a cabo pruebas 
+unitarias, de regresión y de integración.
+\end{itemize}
+\item[Documentación.] Según se va desarrollando la aplicación se va redactando
+un documentación que describe detalladamente cada una de las fases mencionadas
+anteriormente. Incluye un manual de usuario y los diagramas de diseño 
+realizados.
+\end{description}
+\end{spacing}
 \section{Medios a utilizar}
+\subsection{Medios hardware}
+\begin{spacing}{1.5}
+Se utilizan varios dispositivos móviles con la plataforma Android entre ellos el
+Geeks\-phone One y el Galaxy Tab 7'.
+\end{spacing}
+\subsection{Medios software}
+\begin{spacing}{1.5}
+Se utiliza la plataforma Android \cite{AND}para el desarrollo de la aplicación
+ móvil. El lenguaje de programación elegido es Java \cite{JAVA}. Además se hace
+ uso de la API \footnote[2]{\emph{API:} Application Programming Interface.} de 
+Facebook \cite{FB} para poder acceder a sus bases de datos y así poder 
+modificar sus vistas que se muestran al usuario final.
 
+El entorno integrado de desarrollo que se utiliza es Eclipse\cite{EC} que 
+permite integrar el plugin ADT (Android Development Tools) para el desarrollo 
+en la plataforma Android. En el caso de almacenar datos en el móvil se hace uso
+ tanto de SQLite \cite{SQL} como de archivos XML \cite{XML}.
+\end{spacing}
+\subsection{Otros medios}
+\begin{spacing}{1.5}
+Se utiliza el lenguaje unificado de modelado (UML) \cite{UML} para la 
+realización de los diagramas de diseño y análisis. Para el control de versiones
+se utiliza el sistema distribuido Git \cite{GIT}y almacenado en Github 
+\cite{GITH}, además para la gestión del proyecto se utiliza Microsoft Project 
+\cite{MS}  y para la documentación escrita el lenguaje de composición de textos 
+\LaTeX{}. Además se utilizan las librerías que se consideren necesarias para
+mejorar la interacción con el dispositivo móvil.
+\end{spacing}
+\begin{thebibliography}{99}
+\bibitem{AAL} Ambient Assisted Living Joint Programme. 
+Web: \url{http://www.aal-europe.eu}
+\bibitem{QR} Sitio oficial códigos QR. Web: \url{http://www.qrplanet.com}
+\bibitem{CTW} Diego López-de-Ipiña, Ignacio Díaz-de-Sarralde, Javier 
+García-Zubia. \emph{An Ambient Assisted Living Platform Integrating RFID Data-
+on-Tag Care Annotations and Twitter.} Journal of Universal Computer Science, 
+vol. 16, no. 12 (2010).
+\bibitem{ALX} Sitio oficial de Alexa Internet. Web: \url{http://www.alexa.com}
+\bibitem{PUD} Ivar Jacobson, Grady Booch, y James Rumbaugh. \emph{The Unified 
+Software Development Process}. Addison-Wesley Professional, 1999.
+\bibitem{UML} Sitio oficial de UML. Web: \url{http://www.uml.org}
+\bibitem{AND} Sitio oficial de Android. Web: \url{http://www.android.com}
+\bibitem{JAVA} Sitio oficial de Java. Web: \url{http://www.java.com}
+\bibitem{FB} Sitio oficial de la API Facebook. \\
+Web: \url{http://www.developers.facebook.com}
+\bibitem{EC} Sitio oficial de Eclipse. Web: \url{http://www.eclipse.org}
+\bibitem{SQL} Sitio oficial de SQLite. Web: \url{http://www.sqlite.org}
+\bibitem{XML} Sitio oficial de XML. Web: \url{http://www.w3.org/XML/}
+\bibitem{GIT} Sitio oficial de GIT. Web: \url{http://git-scm.com/}
+\bibitem{GITH} Sitio oficial de Github. Web: \url{https://www.github.com}
+\bibitem{MS} Sitio oficial de Microsoft Project. \\
+Web: \url{http://www.microsoft.com/project/}
+\end{thebibliography}
 \end{document}
