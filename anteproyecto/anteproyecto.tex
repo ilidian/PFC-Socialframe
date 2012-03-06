@@ -40,7 +40,7 @@
 % Portada
 \marginsize{2.5cm}{2cm}{3cm}{2cm}
 \portada{Ingeniería en Informática}
-{\emph{FrameBook}}{Red social familiar para personas dependientes}{Anteproyecto Fin de Carrera}{Autor: Juan Miguel Torres Triviño\\Director: Ramón Hervás Lucas}{Febrero, 2012}
+{\emph{SocialFrame}}{Aplicación móvil amigable para la accesibilidad de personas dependientes o mayores a redes sociales}{Anteproyecto Fin de Carrera}{Autor: Juan Miguel Torres Triviño\\Director: Ramón Hervás Lucas}{Marzo, 2012}
 \marginsize{3.5cm}{2cm}{2.5cm}{2.5cm}
 % Licencia
 \licencia{Juan Miguel Torres Triviño} 
@@ -59,36 +59,49 @@ otras mediante el uso de tecnologías de información y comunicación. Dentro de
 ámbito de la AAL surgen multitud de aplicaciones móviles que se centran en 
 distintos aspectos de la vida como las relaciones sociales. Este tipo de 
 relaciones han tomado un rumbo diferente desde que entrasen en escena las redes
- sociales en la Web, como por ejemplo Twitter o Facebook entre otras. 
+ sociales en la Web, como por ejemplo Twitter, Google+ o Facebook entre otras. 
+
+Existe un gran problema alrededor de las redes sociales y es la dificultad que
+tienen las personas mayores o dependientes en acceder a ellas. Esto ocurre por 
+diversos motivos: complejidad a la hora de navegar, mucha información accesible 
+mostrada, gran variedad de acciones a realizar y rápida expansión de estas 
+redes sociales sin una preparación previa, sobretodo en el caso de este conjunto
+de la sociedad. Por ello surge esta aplicación que intenta resolver estas 
+dificultades propuestas y conseguir que estas personas puedan acceder a las 
+redes sociales de una forma sencilla y cómoda.
 
 Gracias a la integración de nuevas tecnologías en los dispositivos móviles como
-códigos QR \cite{QR}, cámara, acelerómetro y conexión a Internet se han 
-desarrollado aplicaciones que nos aportan información de redes sociales y 
+códigos QR \cite{QR}, cámara, acelerómetro y conexión a Internet es posible 
+desarrollar aplicaciones que nos aportan información de redes sociales y 
 permiten interactuar con ellas.
 \end{spacing}
 \subsection{Objetivo general}
 \begin{spacing}{1.5}
 El objetivo general del proyecto es el desarrollo de una aplicación en la 
-plataforma Android que permita a las personas dependientes interactuar con la 
-red social Facebook. La aplicación utiliza interfaces sencillas y cómodas para
-esa interacción.
+plataforma Android que permita a las personas dependientes interactuar con las 
+redes sociales. La aplicación utiliza interfaces amigables y fáciles de 
+entender.
 \end{spacing}
 \subsection{Objetivos específicos}
 \begin{spacing}{1.5}
 Se plantean una serie de objetivos específicos en los que se centra el trabajo a
 lo largo del proyecto:
 \begin{itemize}
+\item Análisis de las dificultades que presentan las personas mayores o 
+dependientes en acceder y entender el uso de las redes sociales.
 \item Desarrollo de una aplicación móvil en la plataforma Android que permita en
-todo momento acceder a la información personal de la red social Facebook. Se 
+todo momento acceder a la información personal de las redes sociales. Se 
 realiza a través de servicios web que permiten en cualquier instante acceder a 
 esos datos.
+\item Análisis y diseño de interfaces amigables e intuitivas para mejorar la 
+iteracción de personas mayores a la aplicación.
 \item Realización de una interfaz invisible y sencilla para la aplicación móvil.
 La interacción es llevada a cabo por el uso de códigos QR y metáforas
  que representan objetos cotidianos y su correspondencia con los posibles 
-elementos de la red social. Además la representación de los datos 
-proporcionados es intuitiva y fácil de entender para el usuario.
-\item Uso de librerías que simplifiquen algunos aspectos de la comunicación con 
-el dispositivo móvil.
+elementos de la red social.
+\item Diseñar técnicas de interacción para evitar complejos sistemas de 
+navegación y simplificar la introducción de información y configuración de 
+aspectos personales del usuario.
 \end{itemize}
 \end{spacing}
 \subsection{Antecedentes y motivación}
@@ -98,20 +111,45 @@ dispositivos móviles, aunque casi ninguna enfocada al ámbito de las personas
 dependientes. \emph{Eldercare} \cite{CTW} surge como aplicación móvil para el 
 seguimiento de distintas actividades sobre la salud en personas mayores. Como 
 se puede ver en la figura \ref{ct} se muestran las distintas acciones que se 
-pueden realizar sobre la aplicación. 
+pueden realizar sobre la aplicación. Utiliza la tecnología NFC 
+\footnote[1]{\emph{NFC:} Near Field Communication.} para la comunicación con el
+ móvil y posteriormente muestra esos resultados en la red social Twitter.
+%, como se puede ver en la figura \ref{tw}.
 \imagen{img/caretwitter.png}{7}{Aplicación CareTwitter.}{ct}
-Utiliza la tecnología NFC \footnote[1]{\emph{NFC:} Near Field Communication.} 
-para la comunicación con el móvil y posteriormente muestra esos resultados en 
-la red social Twitter, como se puede ver en la figura \ref{tw}.
-\imagen{img/twitter.png}{7}{Twitter.}{tw}
-Las redes sociales continúan avanzando en Internet a pasos agigantados, 
-especialmente dentro de lo que se ha denominado Web 2.0 y Web 3.0, de entre 
-todas la que más ha aumentado en los últimos años es Facebook. Según el ranking
-\emph{Alexa}, generado por la empresa Alexa Interntet \cite{ALX}, la red social
- Facebook es el segundo sitio más visitado en Internet y tiene unos 800.000 
-millones de usuarios en 2012. Estas estadísticas informan de la importancia de
-Facebook en los usuarios de Internet y por tanto, la necesidad de acercar esta
-experiencia a personas mayores o dependientes.
+%\imagen{img/twitter.png}{7}{Twitter.}{tw}
+\emph{TweetDeck} \cite{TD} es una aplicación móvil que en un principio solo 
+permitia escribir mensajes en Twitter, pero poco a poco ha ido añadiendo la 
+posibilidad de cambiar estados en otras redes sociales como Facebook, Google +,
+ MySpace y LinkedIn. Consume muy pocos recursos y muestra todo de una manera 
+ordenada como se observa en la figura \ref{twd}, permite abrir múltiples 
+cuentas para poder revisar todo sin demora y ofrece opciones para elegir que 
+quieres y que no quieres ver.  TweetDeck posee una interfaz sencilla, cómoda y 
+fácil de utilizar y además permite condensar mucha información.
+\imagen{img/tweetd.png}{8}{TweetDeck.}{twd}
+
+En otros ámbitos diferentes a los dispositivos móviles aparecen una serie de
+investigaciones y aplicaciones para mejorar la accesibilidad de las personas 
+mayores o dependientes a ciertas herramientas de Internet y que tienen un 
+objetivo social, es el caso de \emph{SeniorChannel} o \emph{Messenger Visual}. 
+SeniorChannel \cite{SEN} es un canal de televisión interactivo en Internet que
+proporciona a las personas de edad avanzada un método de interacción con el que 
+tener acceso a actividades en su comunidad, capacidad de participar en los 
+debates de actualidad, servicios de entrenimiento y grupos de discusión 
+independientemente de su ubicación geográfica. La tecnología SeniorChannel 
+facilita la interacción entre las personas de edad avanzada, así como para 
+personas cercanas a su entorno, como por ejemplo, la familia y los supervisores
+de atención.
+
+Messenger Visual \cite{MSN} es un servicio de mensajería instantánea que 
+permite a las personas con discapacidad cognitiva comunicarse a través de 
+Internet. El principal aspecto de este servicio es que se sustituyan los 
+mensajes de texto por mensajes basados en pictogramas \footnote[2]{\emph{Pictograma:} signo que representa esquemáticamente un símbolo, objeto real o figura.},
+ además se proporciona la funcionalidad básica de un servicio de mensajería 
+instantánea. En este sentido, la interfaz de usuario contiene una serie de 
+funciones básicas, tales como control de acceso o login, gestión de contactos 
+y conversaciones de chat, todas ellas mostradas de una forma clara y fácil de 
+entender.
+
 \end{spacing}
 \section{Métodos y fases de trabajo}
 \subsection{Metodología de desarrollo}
@@ -128,12 +166,11 @@ entregables de tipo documentación o software que engloban uno o varios casos de
 \end{spacing}
 \subsection{Fases del desarrollo}
 \begin{spacing}{1.5}
-Las fases para el desarrollo completo de la aplicación, ordenadas 
-cronológicamente, son las siguientes:
+Las fases del desarrollo, ordenadas cronológicamente, son las siguientes:
 \begin{description}
-\item [Estado del arte.] En esta fase se realiza un análisis de la situación 
-actual de la temática del proyecto. Se tienen en cuenta tanto investigaciones 
-académicas como aplicaciones comerciales.
+\item [Estado del arte.] Se realiza un análisis de la situación actual de la 
+temática del proyecto. Se tienen en cuenta tanto investigaciones académicas 
+como aplicaciones comerciales.
 \item [Desarrollo software.] En esta fase se procede a la construcción de la 
 aplicación siguiendo una serie de iteraciones, estas dependientes del número de
 casos de uso. Cada iteración consta de las siguientes fases:
@@ -172,9 +209,9 @@ Geeks\-phone One y el Galaxy Tab 7'.
 \begin{spacing}{1.5}
 Se utiliza la plataforma Android \cite{AND}para el desarrollo de la aplicación
  móvil. El lenguaje de programación elegido es Java \cite{JAVA}. Además se hace
- uso de la API \footnote[2]{\emph{API:} Application Programming Interface.} de 
-Facebook \cite{FB} para poder acceder a sus bases de datos y así poder 
-modificar sus vistas que se muestran al usuario final.
+ uso de APIs \footnote[3]{\emph{API:} Application Programming Interfaces.} para
+ poder acceder a las bases de datos de las redes sociales y así poder modificar
+ sus vistas que se muestran al usuario final.
 
 El entorno integrado de desarrollo que se utiliza es Eclipse\cite{EC} que 
 permite integrar el plugin ADT (Android Development Tools) para el desarrollo 
@@ -199,14 +236,20 @@ Web: \url{http://www.aal-europe.eu}
 García-Zubia. \emph{An Ambient Assisted Living Platform Integrating RFID Data-
 on-Tag Care Annotations and Twitter.} Journal of Universal Computer Science, 
 vol. 16, no. 12 (2010).
-\bibitem{ALX} Sitio oficial de Alexa Internet. Web: \url{http://www.alexa.com}
+\bibitem{TD} Sitio oficial de TweetDeck. Web: \url{http://www.tweetdeck.com}
+\bibitem{SEN} Ana Hernández, Francisco Ibañez, Neftis Atallah. 
+\emph{SENIORCHANNEL: An Interactive Digital Television Channel for Promoting 
+Entertainment and Social Interaction amongst Elderly People.} Third 
+International Workshop, IWAAL 2011. 
+\bibitem{MSN} Pere Tuset, Juan Miguel López, Pere Barberán, Léonard Janer, 
+Cristina Cervelló-Pastor. \emph{Designing Messenger Visual, an Instant 
+Messaging Service fro Individuals with Cognitive Disability.} Third 
+International Workshop, IWAAL 2011.
 \bibitem{PUD} Ivar Jacobson, Grady Booch, y James Rumbaugh. \emph{The Unified 
 Software Development Process}. Addison-Wesley Professional, 1999.
 \bibitem{UML} Sitio oficial de UML. Web: \url{http://www.uml.org}
 \bibitem{AND} Sitio oficial de Android. Web: \url{http://www.android.com}
 \bibitem{JAVA} Sitio oficial de Java. Web: \url{http://www.java.com}
-\bibitem{FB} Sitio oficial de la API Facebook. \\
-Web: \url{http://www.developers.facebook.com}
 \bibitem{EC} Sitio oficial de Eclipse. Web: \url{http://www.eclipse.org}
 \bibitem{SQL} Sitio oficial de SQLite. Web: \url{http://www.sqlite.org}
 \bibitem{XML} Sitio oficial de XML. Web: \url{http://www.w3.org/XML/}
