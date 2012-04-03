@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="SocialFrame">
         <activity
-            android:name=".SocialFrameActivity" >
+            android:name=".controller.SocialFrameActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -23,8 +23,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="org.pfc.socialframe.ReaderQRActivity" ></activity>
-        <activity android:name="org.pfc.socialframe.InfoActivity" ></activity>
+        <activity android:name=".controller.ReaderQRActivity" ></activity>
+        <activity android:name=".controller.InfoActivity" ></activity>
+        <activity android:name=".controller.PhotoActivity" ></activity>
+        <activity android:name=".controller.FriendsActivity" ></activity>
     </application>
 
 </manifest>

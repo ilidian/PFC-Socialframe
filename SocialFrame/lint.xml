@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res\layout-land\main.xml" />
+        <ignore path="res\layout-land\photo.xml" />
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout\main.xml" />
+        <ignore path="res\layout\status.xml" />
+    </issue>
+    <issue id="DisableBaselineAlignment">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res\layout-land\main.xml" />
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout\main.xml" />
+        <ignore path="res\layout\status.xml" />
+    </issue>
+    <issue id="InefficientWeight">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+    <issue id="NestedWeights">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+    <issue id="UselessLeaf">
+        <ignore path="res\layout\photo.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+</lint>

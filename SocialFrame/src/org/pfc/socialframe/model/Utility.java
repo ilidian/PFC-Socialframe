@@ -1,4 +1,4 @@
-package org.pfc.socialframe;
+package org.pfc.socialframe.model;
 
 import java.io.BufferedInputStream;
 import java.io.FilterInputStream;

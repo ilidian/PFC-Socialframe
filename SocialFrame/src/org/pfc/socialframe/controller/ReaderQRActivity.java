@@ -1,4 +1,5 @@
-package org.pfc.socialframe;
+package org.pfc.socialframe.controller;
+
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,14 +18,12 @@ public class ReaderQRActivity extends Activity{
 	 	      if (resultCode == RESULT_OK) {
 	 	         String contents = intent.getStringExtra("SCAN_RESULT");
 	 	         handlerCodeQR(contents);
-	 	         // Handle successful scan
 	 	      } else if (resultCode == RESULT_CANCELED) {
-	 	         // Handle cancel
 	 	      }
 	 	   }
 	}
 	private void handlerCodeQR(String contents) {
-		Intent i=new Intent(ReaderQRActivity.this,InfoActivity.class);
+		Intent i=new Intent(ReaderQRActivity.this,PhotoActivity.class);
 		startActivity(i);
 		finish();
 	}

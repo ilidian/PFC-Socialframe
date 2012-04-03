@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip"
+    android:background="@drawable/gradientini">
+
+    <ImageView
+        android:id="@+id/pic"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/namefriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/pic"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/pic"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/pic"
+        android:ellipsize="marquee"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
