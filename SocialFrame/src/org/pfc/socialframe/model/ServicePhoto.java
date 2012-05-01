@@ -1,8 +1,5 @@
 package org.pfc.socialframe.model;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -13,7 +10,6 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.facebook.android.AsyncFacebookRunner;
-import com.facebook.android.AsyncFacebookRunner.RequestListener;
 import com.facebook.android.Facebook;
 import com.facebook.android.FacebookError;
 import com.facebook.android.SessionStore;
@@ -31,20 +27,8 @@ public class ServicePhoto {
 		SessionStore.restore(mFacebook, a);
 		Bundle params = new Bundle();
         params.putString("method", "fql.query");
-        params.putString("query", "SELECT src_small FROM photo WHERE aid IN (SELECT aid FROM album WHERE owner=me())");
-		mAsyncRunner.request(params, new RequestListener() {
-			@Override
-			public void onMalformedURLException(MalformedURLException e, Object state) {
-			}
-			@Override
-			public void onIOException(IOException e, Object state) {
-			}
-			@Override
-			public void onFileNotFoundException(FileNotFoundException e, Object state) {
-			}
-			@Override
-			public void onFacebookError(FacebookError e, Object state) {
-			}
+        params.putString("query", "SELECT src FROM photo WHERE aid IN (SELECT aid FROM album WHERE owner=me())");
+		mAsyncRunner.request(params, new RequestListenerBase() {
 			@Override
 			public void onComplete(String response, Object state) {
 				try {
@@ -52,7 +36,7 @@ public class ServicePhoto {
 					JSONArray json = Util.parseJson(response).getJSONArray("data");
 					ArrayList<String> photolist = new ArrayList<String>();
 					for(int i=0; i < json.length(); i++){
-						photolist.add(json.getJSONObject(i).getString("src_small"));
+						photolist.add(json.getJSONObject(i).getString("src"));
 					}
 					String [] photoarray = new String[photolist.size()];
 					photoarray = photolist.toArray(photoarray);

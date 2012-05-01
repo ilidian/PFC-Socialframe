@@ -26,6 +26,13 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/gradientini"
         android:orientation="vertical" >
+
+        <ZoomControls
+            android:id="@+id/zoomphoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"/>
 
     </LinearLayout>
 

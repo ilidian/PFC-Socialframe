@@ -10,6 +10,7 @@ import org.pfc.socialframe.model.Utility;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +29,7 @@ public class FriendsActivity extends ListActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.friends);
+        setContentView(R.layout.list);
         sf = new ServiceFriends(this);
         friends = new ArrayList<User>();
         this.adapter = new IconListViewAdapter(this, R.layout.iconrow, friends);
@@ -37,8 +38,14 @@ public class FriendsActivity extends ListActivity {
         sf.showFriends(FriendsActivity.this);
     }
     @Override
-    protected void onListItemClick(ListView l, View v, int position, long id) {
-        User u = (User) l.getItemAtPosition(position);        
+	public void onBackPressed(){
+		super.onBackPressed();
+		Intent i=new Intent(FriendsActivity.this,ReaderQRActivity.class);
+		startActivity(i);
+		finish();
+	}
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {       
 //        Toast.makeText(this, local.getLocalName(), 
 //          		Toast.LENGTH_LONG).show();      
     }
@@ -84,6 +91,6 @@ public class FriendsActivity extends ListActivity {
                 }
                 return v;
         }
-}
+    }
 
 }

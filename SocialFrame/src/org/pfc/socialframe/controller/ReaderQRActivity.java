@@ -1,6 +1,8 @@
 package org.pfc.socialframe.controller;
 
 
+import org.pfc.socialframe.model.Constants;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,9 +24,18 @@ public class ReaderQRActivity extends Activity{
 	 	      }
 	 	   }
 	}
+	@SuppressWarnings("rawtypes")
 	private void handlerCodeQR(String contents) {
-		Intent i=new Intent(ReaderQRActivity.this,PhotoActivity.class);
-		startActivity(i);
-		finish();
+		Class c = null;
+		if(contents.equals(Constants.InfoQR[0])||contents.equals(Constants.InfoQR[1])||contents.equals(Constants.InfoQR[2])) c = InfoActivity.class;
+		if(contents.equals(Constants.FriendsQR[0])||contents.equals(Constants.FriendsQR[1])||contents.equals(Constants.FriendsQR[2])) c = FriendsActivity.class;
+		if(contents.equals(Constants.PhotosQR[0])||contents.equals(Constants.PhotosQR[1])||contents.equals(Constants.PhotosQR[2])) c = PhotoActivity.class;
+		if(contents.equals(Constants.MessagesQR[0])||contents.equals(Constants.MessagesQR[1])||contents.equals(Constants.MessagesQR[2])) c = MessagesActivity.class;
+		if(contents.equals(Constants.FeedQR[0])||contents.equals(Constants.FeedQR[1])||contents.equals(Constants.FeedQR[2])) c = FeedActivity.class;
+		if(contents.equals(Constants.EventsQR[0])||contents.equals(Constants.EventsQR[1])||contents.equals(Constants.EventsQR[2])) c = EventsActivity.class;
+		Intent i=new Intent(ReaderQRActivity.this,c);
+		startActivity(i); 
+		ReaderQRActivity.this.finish();
+		
 	}
 }

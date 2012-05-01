@@ -1,25 +1,19 @@
 package org.pfc.socialframe.model;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.pfc.socialframe.controller.InfoActivity;
 
 import android.app.Activity;
+import android.os.Bundle;
 
 import com.facebook.android.AsyncFacebookRunner;
 import com.facebook.android.Facebook;
 import com.facebook.android.FacebookError;
 import com.facebook.android.SessionStore;
 import com.facebook.android.Util;
-import com.facebook.android.AsyncFacebookRunner.RequestListener;
 
 public class ServiceUser {
-	private String picid, url, n, resp;
 	private InfoActivity iac;
 	public Facebook mFacebook = new Facebook(Constants.APP_ID);
 	private AsyncFacebookRunner mAsyncRunner;
@@ -29,53 +23,35 @@ public class ServiceUser {
 	public void showUser(Activity ia, final User u){
 		mAsyncRunner = new AsyncFacebookRunner(mFacebook);
 		SessionStore.restore(mFacebook, ia);
-        try {
-			resp = mFacebook.request("me/albums");
-			JSONArray jarray = Util.parseJson(resp).getJSONArray("data");
-			JSONObject json;
-			for(int i=0; i<jarray.length();i++){
-				json = jarray.getJSONObject(i);
-				n = json.getString("name");
-				if (n.equals("Profile Pictures")) picid = json.getString("cover_photo");
-			}
-			resp = mFacebook.request(picid);
-			json = Util.parseJson(resp);
-			url = json.getString("picture");
-			u.setPicuser(url);
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (FacebookError e) {
-			e.printStackTrace();
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-        mAsyncRunner.request("me", new RequestListener() {
-			@Override
-			public void onMalformedURLException(MalformedURLException e, Object state) {}
-			@Override
-			public void onIOException(IOException e, Object state) {}	
-			@Override
-			public void onFileNotFoundException(FileNotFoundException e, Object state) {}			
-			@Override
-			public void onFacebookError(FacebookError e, Object state) {}		
+		Bundle params = new Bundle();
+        params.putString("method", "fql.query");
+        params.putString("query", "SELECT first_name,last_name,pic,locale,sex,birthday_date,current_location,hometown_location FROM user WHERE uid=me()");
+        mAsyncRunner.request(params, new RequestListenerBase() {		
 			@Override
 			public void onComplete(String response, Object state) {
 				 try {
-						JSONObject json = Util.parseJson(response);
-						JSONObject jsonc = Util.parseJson(response).getJSONObject("location");
-						u.setName(json.getString("first_name"));
-						u.setLastname(json.getString("last_name"));
-						u.setBirthday(formatDate(json.getString("birthday")));
-						u.setGender(json.getString("gender"));
-						u.setCity(formatLocation(jsonc.getString("name"),json.getString("locale")));
-						iac.updateInfo(u);
-					} catch (JSONException e) {
-						e.printStackTrace();
-					} catch (FacebookError e) {
-						e.printStackTrace();
-					}						
+					 response = "{\"data\":" + response + "}";
+					 JSONObject json = Util.parseJson(response).getJSONArray("data").getJSONObject(0);
+					 u.setName(json.getString("first_name"));
+					 u.setLastname(json.getString("last_name"));
+					 u.setPicuser(json.getString("pic"));
+					 u.setBirthday(formatDate(json.getString("birthday_date")));
+					 u.setGender(json.getString("sex"));
+					 if(!json.isNull("hometown_location")){
+						 u.setCity(formatLocation(json.getJSONObject("hometown_location").getString("city"),json.getJSONObject("hometown_location").getString("country")));
+					 }else{
+						 if(!json.isNull("current_location")){
+							 u.setCity(formatLocation(json.getJSONObject("current_location").getString("city"),json.getJSONObject("current_location").getString("country")));
+						 }else{
+							 u.setCity(formatLocation("", json.getString("locale")));
+						 }
+					 }
+					 iac.updateInfo(u);
+				 } catch (JSONException e) {
+					 e.printStackTrace();
+				 } catch (FacebookError e) {
+					 e.printStackTrace();
+				 }						
 			}
 		});
 	}
@@ -126,11 +102,15 @@ public class ServiceUser {
 		return date;
 	}
 	public String formatLocation(String city, String country){
-		String location = "";
-		String[] cnt = country.split("_");
-		for(int i = 0; i < Constants.Countries[0].length; i++){
-			if(cnt[1].equals(Constants.Countries[0][i])) location = Constants.Countries[1][i];
-		}
-		return city + ", "+ location;
+		String loc = "", location="";
+		if(country.contains("_")){
+			String[] cnt = country.split("_");
+			for(int i = 0; i < Constants.Countries[0].length; i++){
+				if(cnt[1].equals(Constants.Countries[0][i])) loc = Constants.Countries[1][i];
+			}
+		}else loc = country;
+		if(city.equals("")) location= loc;
+		else location = city+", "+loc;
+		return location;
 	}
 }

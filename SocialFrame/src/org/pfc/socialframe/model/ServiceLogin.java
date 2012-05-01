@@ -22,12 +22,14 @@ public class ServiceLogin {
 	public void facebookAvaible(final Activity sf){
     	SessionStore.restore(mFacebook, sf);
         if( !mFacebook.isSessionValid()) {
-        	mFacebook.authorize(sf, new String[] { "" },mFacebook.FORCE_DIALOG_AUTH,new DialogListener() {
+        	mFacebook.authorize(sf, new String[] {""}, mFacebook.FORCE_DIALOG_AUTH,new DialogListener() {
 				@Override
-				public void onFacebookError(FacebookError e) {			
+				public void onFacebookError(FacebookError e) {
+					e.printStackTrace();
 				}		
 				@Override
-				public void onError(DialogError e){			
+				public void onError(DialogError e){	
+					e.printStackTrace();
 				}			
 				@Override
 				public void onComplete(Bundle values) {

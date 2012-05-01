@@ -1,14 +1,10 @@
 package org.pfc.socialframe.model;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.pfc.socialframe.controller.FriendsActivity;
-import org.pfc.socialframe.controller.PhotoActivity;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,7 +14,6 @@ import com.facebook.android.Facebook;
 import com.facebook.android.FacebookError;
 import com.facebook.android.SessionStore;
 import com.facebook.android.Util;
-import com.facebook.android.AsyncFacebookRunner.RequestListener;
 
 public class ServiceFriends {
 	private FriendsActivity fa;
@@ -33,19 +28,7 @@ public class ServiceFriends {
 		Bundle params = new Bundle();
         params.putString("method", "fql.query");
         params.putString("query", "SELECT name,pic_small FROM user WHERE uid IN (SELECT uid2 FROM friend WHERE uid1= me())");
-		mAsyncRunner.request(params, new RequestListener() {
-			@Override
-			public void onMalformedURLException(MalformedURLException e, Object state) {
-			}
-			@Override
-			public void onIOException(IOException e, Object state) {
-			}
-			@Override
-			public void onFileNotFoundException(FileNotFoundException e, Object state) {
-			}
-			@Override
-			public void onFacebookError(FacebookError e, Object state) {
-			}
+		mAsyncRunner.request(params, new RequestListenerBase() {
 			@Override
 			public void onComplete(String response, Object state) {
 				try {

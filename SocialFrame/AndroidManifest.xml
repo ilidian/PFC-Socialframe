@@ -27,6 +27,9 @@
         <activity android:name=".controller.InfoActivity" ></activity>
         <activity android:name=".controller.PhotoActivity" ></activity>
         <activity android:name=".controller.FriendsActivity" ></activity>
+    	<activity android:name=".controller.MessagesActivity" ></activity>
+    	<activity android:name=".controller.EventsActivity" ></activity>
+    	<activity android:name=".controller.FeedActivity" ></activity>
     </application>
 
 </manifest>

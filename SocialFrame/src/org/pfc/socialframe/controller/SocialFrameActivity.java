@@ -54,6 +54,7 @@ public class SocialFrameActivity extends Activity {
                 }else{
                 	tv.setText("SIN CONEXIÓN");
                 	b.setVisibility(0);
+//                    sl.facebookAvaible(SocialFrameActivity.this);
                 }
             		pb.setVisibility(4);
             }
@@ -66,7 +67,7 @@ public class SocialFrameActivity extends Activity {
          return activeNetworkInfo != null;
     }
     public void ToReaderQR(){
-    	Intent i=new Intent(SocialFrameActivity.this,PhotoActivity.class);
+    	Intent i=new Intent(SocialFrameActivity.this,ReaderQRActivity.class);
 		startActivity(i); 
 		finish();
     }

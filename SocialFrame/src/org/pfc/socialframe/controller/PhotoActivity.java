@@ -15,6 +15,7 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ZoomControls;
 
 public class PhotoActivity extends Activity implements OnGestureListener{
 	private int index = 0;
@@ -22,17 +23,26 @@ public class PhotoActivity extends Activity implements OnGestureListener{
 	private ProgressDialog pd;
 	private Bitmap[] photos;
 	private ServicePhoto sp;
+	private ZoomControls zcp;
 	private GestureDetector gesturedetector = null;
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.photo);
         sp = new ServicePhoto(this);
+        zcp = (ZoomControls) findViewById(R.id.zoomphoto);
         ivp = (ImageView) findViewById(R.id.ivphoto);
         gesturedetector = new GestureDetector(this, this);
         pd = ProgressDialog.show(PhotoActivity.this, "", "Cargando fotos ...");
         sp.showPhotos(PhotoActivity.this);
     }
+	@Override
+	public void onBackPressed(){
+		super.onBackPressed();
+		Intent i=new Intent(PhotoActivity.this,ReaderQRActivity.class);
+		startActivity(i);
+		finish();
+	}
 	public void updatePhotos(String[] l){
 		photos = new Bitmap[l.length];
 		for(int i = 0; i< l.length; i++) photos[i]= Utility.getBitmap(l[i]);
@@ -43,13 +53,6 @@ public class PhotoActivity extends Activity implements OnGestureListener{
 				pd.dismiss();
 			}
 		});
-	}
-	@Override
-	public void onBackPressed(){
-		super.onBackPressed();
-		Intent i=new Intent(PhotoActivity.this,ReaderQRActivity.class);
-		startActivity(i);
-		finish();
 	}
 	@Override
     public boolean onTouchEvent(MotionEvent event) {

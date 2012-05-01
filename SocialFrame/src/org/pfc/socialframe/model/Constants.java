@@ -6,6 +6,15 @@ public class Constants {
 	//Constantes de velocidad y distancia en los gestos de las fotos
 	public static final int SWIPE_MIN_VELOCITY = 50;
 	public static final int SWIPE_MIN_DISTANCE = 50;
+	//Codigo para reconocer voz
+	public static final int REQUEST_CODE = 1234;
+	//Códigos QR
+	public static final String[] EventsQR = {"calendario","fecha","blanco"};
+	public static final String[] FeedQR = {"muro","pared","gris"};
+	public static final String[] FriendsQR = {"agenda","contactos","verde"};
+	public static final String[] InfoQR = {"carnet","tarjeta","azul"};
+	public static final String[] MessagesQR = {"carta","mensaje","amarillo"};
+	public static final String[] PhotosQR = {"foto","album","negro"};
 	//Matriz con paises ISO
 	public static final String[][] Countries = {{"AD","AE","AF","AG","AI","AL","AM","AN","AO","AQ","AR","AS","AT","AU","AW","AX","AZ",
 		"BA","BB","BD","BE","BF","BG","BH","BI","BJ","BL","BM","BN","BO","BR","BS","BT","BV","BW","BY","BZ","CA","CC","CF","CG","CH",
