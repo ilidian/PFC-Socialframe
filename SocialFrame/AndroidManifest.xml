@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.pfc.socialframe"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:icon="@drawable/icon"
+        android:label="SocialFrame">
+        <activity
+            android:name=".controller.SocialFrameActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter >
+                <action android:name="com.google.zxing.client.android.SCAN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".controller.ReaderQRActivity" ></activity>
+        <activity android:name=".controller.InfoActivity" ></activity>
+        <activity android:name=".controller.PhotoActivity" ></activity>
+        <activity android:name=".controller.FriendsActivity" ></activity>
+    	<activity android:name=".controller.MessagesActivity" ></activity>
+    	<activity android:name=".controller.EventsActivity" android:theme="@style/ListFont"></activity>
+    	<activity android:name=".controller.FeedActivity" ></activity>
+    	<activity android:name=".controller.HelpActivity" ></activity>
+    </application>
+
+</manifest>

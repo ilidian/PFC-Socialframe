@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="ContentDescription">
+        <ignore path="res\layout-land\credits.xml" />
+        <ignore path="res\layout-land\dialogfriend.xml" />
+        <ignore path="res\layout-land\event.xml" />
+        <ignore path="res\layout-land\feedrow.xml" />
+        <ignore path="res\layout-land\friendrow.xml" />
+        <ignore path="res\layout-land\helpqr.xml" />
+        <ignore path="res\layout-land\iconrow.xml" />
+        <ignore path="res\layout-land\main.xml" />
+        <ignore path="res\layout-land\photo.xml" />
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout\credits.xml" />
+        <ignore path="res\layout\dialogfriend.xml" />
+        <ignore path="res\layout\dialogphoto.xml" />
+        <ignore path="res\layout\event.xml" />
+        <ignore path="res\layout\feedrow.xml" />
+        <ignore path="res\layout\friendrow.xml" />
+        <ignore path="res\layout\helpphoto.xml" />
+        <ignore path="res\layout\helpqr.xml" />
+        <ignore path="res\layout\iconrow.xml" />
+        <ignore path="res\layout\main.xml" />
+        <ignore path="res\layout\photo.xml" />
+        <ignore path="res\layout\status.xml" />
+    </issue>
+    <issue id="DisableBaselineAlignment">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+    <issue id="DuplicateIds">
+        <ignore path="res\layout-land\toast.xml" />
+    </issue>
+    <issue id="HardcodedText">
+        <ignore path="res\layout-land\credits.xml" />
+        <ignore path="res\layout-land\dialogfriend.xml" />
+        <ignore path="res\layout-land\event.xml" />
+        <ignore path="res\layout-land\helpqr.xml" />
+        <ignore path="res\layout-land\main.xml" />
+        <ignore path="res\layout-land\photo.xml" />
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout-land\toast.xml" />
+        <ignore path="res\layout\credits.xml" />
+        <ignore path="res\layout\dialogfriend.xml" />
+        <ignore path="res\layout\dialogphoto.xml" />
+        <ignore path="res\layout\event.xml" />
+        <ignore path="res\layout\feedwall.xml" />
+        <ignore path="res\layout\helpphoto.xml" />
+        <ignore path="res\layout\helpqr.xml" />
+        <ignore path="res\layout\main.xml" />
+        <ignore path="res\layout\photo.xml" />
+        <ignore path="res\layout\status.xml" />
+        <ignore path="res\layout\toast.xml" />
+    </issue>
+    <issue id="InefficientWeight">
+        <ignore path="res\layout-land\event.xml" />
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout\photo.xml" />
+    </issue>
+    <issue id="NestedWeights">
+        <ignore path="res\layout-land\status.xml" />
+    </issue>
+    <issue id="ObsoleteLayoutParam">
+        <ignore path="res\layout-land\photo.xml" />
+    </issue>
+    <issue id="ScrollViewSize">
+        <ignore path="res\layout-land\helpqr.xml" />
+        <ignore path="res\layout\helpphoto.xml" />
+        <ignore path="res\layout\helpqr.xml" />
+    </issue>
+    <issue id="UselessLeaf">
+        <ignore path="res\layout\photo.xml" />
+    </issue>
+    <issue id="UselessParent">
+        <ignore path="res\layout-land\status.xml" />
+        <ignore path="res\layout-land\toast.xml" />
+    </issue>
+</lint>
